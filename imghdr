@@ -1,0 +1,2 @@
+def what(file, h=None):
+    return "jpeg"  # или "png", если в боте в основном PNG-картинки
