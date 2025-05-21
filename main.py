@@ -1,13 +1,17 @@
 import sys
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, KeyboardButton
-from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackQueryHandler, ContextTypes, \
-    ConversationHandler
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackQueryHandler, ContextTypes, ConversationHandler
 import sqlite3
-import os
 import logging
 from datetime import datetime
+
+application = Application.builder().token(os.getenv("BOT_TOKEN")).build()
+
 
 # Состояния для ConversationHandler
 CATEGORY, DESCRIPTION, LOCATION, PHOTO, CONFIRM = range(5)
@@ -1029,4 +1033,5 @@ def main():
     application.run_polling()
 
 if __name__ == "__main__":
-    main()
+    import asyncio
+    asyncio.run(main())
